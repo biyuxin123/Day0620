@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{money | m}} {{money | usd}} {{money | rmb}}
+    </div>
+</body>
+<script>
+	Vue.filter('m',function(input){
+		return "¥"+input+"元";
+	});
+    let vm = new Vue({
+        el:"#app",
+        data:{
+			money:25.5
+        },
+        methods:{
+             
+        },
+		filters:{
+			usd(input){
+				return "$"+input;
+			},
+			rmb(input){
+				return "¥"+input;
+			}
+		}
+    })
+</script>
+
+</html>

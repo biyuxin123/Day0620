@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.min.js"></script>
+
+</head>
+<body>
+    <div id="app">
+        <input type="text" @keydown.13="demo($event)">
+        <input type="text" @keydown.enter="demo($event)">
+    </div>
+</body>
+<script>
+    let vm = new Vue({
+        el:"#app",
+        data:{
+
+        },
+        methods:{
+            demo(ev){
+                alert("你按了回车键");
+                console.log(ev.keyCode)
+            }
+        }
+    });
+</script>
+
+</html>

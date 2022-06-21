@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Title</title>
+		<script src="vue.min.js"></script>
+		<style>
+			.box {
+				width: 300px;
+				height: 300px;
+				background-color: red;
+			}
+
+			.box1 {
+				width: 150px;
+				height: 150px;
+				background-color: green;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<!--        <div class="box" @contextmenu="show($event)"></div>-->
+			<!--        <div class="box" @contextmenu.prevent="show()"></div>-->
+
+			<div class="box" @contextmenu.prevent="demo1">
+				<div class="box1" @contextmenu.prevent.stop="demo2"></div>
+			</div>
+		</div>
+	</body>
+	<script>
+		let vm = new Vue({
+			el: "#app",
+			data: {
+
+			},
+			methods: {
+				demo2() {
+					alert("green div")
+				},
+				demo1() {
+					alert("red div")
+				},
+				// show(ev){
+				//     alert(1);
+				//     // return false; 这么写没有任何效果，看看就行了，不要执行
+				//     ev.preventDefault();
+				// }
+				show(ev) {
+					alert(1);
+
+				}
+			}
+		})
+	</script>
+
+</html>

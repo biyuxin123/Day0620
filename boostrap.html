@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.min.js"></script>
+	<script src="node_modules\bootstrap\dist\js\bootstrap.min.js"></script>
+	<link href="node_modules\bootstrap\dist\css\bootstrap.min.css" rel="stylesheet">
+    <style>
+		
+	</style>
+  </head>
+  
+  <body>
+    <div class="container"> <!-- 注意app换成container -->
+		<div class="row">
+			<div class="mb-3 row">
+				<label for="username" class="col-sm-2 col-form-label">账号</label>
+				<div class="col-sm-5">
+					<input v-model="name" type="text" class="form-control" id="username"/>
+				</div>
+			</div>
+			<div class="mb-3 row">
+				<label for="userpassword" class="col-sm-2 col-form-label">密码</label>
+				<div class="col-sm-5">
+					<input v-model="password" type="text" class="form-control" id="userpassword"/>
+				</div>
+			</div>
+			<div class="mb-3 row">
+				<div class="col-sm-5">
+					<input type="button" value="添加" class="btn btn-success" @click="add"/>
+				</div>
+			</div>
+		</div>
+		<table class="table table-dark table-hover">
+			<tr class="text-center">
+				<td>编号</td>
+				<td>姓名</td>
+				<td>密码</td>
+				<td>操作</td>
+			</tr>
+			<tr v-show="person.length==0">
+				<td colspan="4" class="text-center text-danger">
+					暂无数据...
+				</td>
+			</tr>
+			<tr class="text-center" v-for="(item,index) in person">
+				<td>{{index+1}}</td>
+				<td>{{item.name}}</td>
+				<td>{{item.pwd}}</td>
+				<td><button class="btn btn-danger" @click="del(index)">删除</button></td>
+			</tr>
+		</table>
+	</div>
+  </body>
+  
+   <script>
+  	let vm = new Vue({
+		el:".container", //注意#app换成.container
+		data: {
+			person:[],
+			name:'',
+			password:''
+		},
+		methods:{
+			add(){
+				if(this.name.length!=0 && this.password.length!=0){
+					this.person.push({
+						name:this.name,
+						pwd:this.password
+					})
+					this.name="";
+					this.password="";
+				}
+			},
+			del(id){
+				this.person.splice(id,1);
+			}
+		}
+	})
+  </script>
+</html>

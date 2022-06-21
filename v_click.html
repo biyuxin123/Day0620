@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.min.js"></script>
+    <style>
+		.box1{
+		    width: 150px;
+		    height: 150px;
+		    background-color: aquamarine;
+		    }
+		.box2{
+		    width: 150px;
+		    height: 150px;
+		    background-color: red;
+		    }
+	</style>
+  </head>
+  
+  <body>
+    <div id="app">
+		<h1>{{msg}}</h1>
+		<button v-on:click="show">显示</button>
+		<button @click="hide">隐藏</button>
+		<button @click="sh">显示/隐藏</button>
+		<button @click="sexC">更改性别</button>
+		<div class="box1" id="box" v-show="isShow"></div>
+		<div class="box2" id="box2" v-if="isShow"></div>
+		<p v-if="sex">男</p>
+		<p v-else>女</p>
+	</div>
+  </body>
+  
+   <script>
+  	let vm = new Vue({
+		el:"#app",
+		data: {
+			 msg:"HelloWorld",
+			 isShow:true,
+			 sex:true
+		},
+		methods:{
+			show(){
+			    let box = document.querySelector("#box");
+			    box.style.display='block';
+			},
+			hide(){
+				let box = document.querySelector("#box");
+				box.style.display='none';
+			},
+			sh(){
+				this.isShow=!this.isShow;
+			},
+			sexC(){
+				this.sex=!this.sex;
+			}
+		}
+	})
+  </script>
+</html>

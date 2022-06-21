@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.min.js"></script>
+	<style>
+		.box{
+			width: 150px;
+			height: 150px;
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+    <div id="app">
+        <div class="box" @click="demo1">
+			<button @click.stop="demo2">测试</button>
+		</div>
+    </div>
+</body>
+<script>
+    let vm = new Vue({
+        el:"#app",
+        data:{
+
+        },
+        methods:{
+           demo2(){
+			   alert("button");
+		   },
+		   demo1(){
+			   alert("div");
+		   }
+        }
+    })
+</script>
+
+</html>
